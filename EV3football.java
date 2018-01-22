@@ -32,8 +32,8 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 
     public static Robot myRobot = new Robot();
 	
-	public static ColorSensor colorSensor = myRobot.getColorSensor(Sensor.Port.S2);
-    public static UltrasonicSensor ultrasonicSensor = myRobot.getUltrasonicSensor(Sensor.Port.S1);
+    //public static ColorSensor colorSensor = myRobot.getColorSensor(Sensor.Port.S2);
+    //public static UltrasonicSensor ultrasonicSensor = myRobot.getUltrasonicSensor(Sensor.Port.S1);
 
     public static Motor leftMotor = myRobot.getLargeMotor(Motor.Port.B);
     public static Motor rightMotor = myRobot.getLargeMotor(Motor.Port.C);
@@ -51,99 +51,99 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     //static final int ROTATIONS = 90;
 
 	
-	//Defining the behaviour of the prgram
-	enum Command {STOP, LEFT, RIGHT, FORWARD, REVERSE, KICK };
-	private static final int DELAY_MS = 50;
+    //Defining the behaviour of the prgram
+    enum Command {STOP, LEFT, RIGHT, FORWARD, REVERSE, KICK };
+    private static final int DELAY_MS = 50;
 	
-	// Make the window, text label and menu
-	private static final int FRAME_WIDTH = 400;
-	private static final int FRAME_HEIGHT = 200;
+    // Make the window, text label and menu
+    private static final int FRAME_WIDTH = 400;
+    private static final int FRAME_HEIGHT = 200;
 	
-	private JLabel label = new JLabel("Stop",JLabel.CENTER);
+    private JLabel label = new JLabel("Stop",JLabel.CENTER);
 			
-	public EV3football() {
-		JMenuBar menuBar = new JMenuBar();
-		JMenu menu = new JMenu("Quit");
-		JMenuItem menuItem = new JMenuItem("Really Quit?");
-		menuItem.addActionListener(this);
-		menu.add(menuItem);
-		menuBar.add(menu);
-		this.setJMenuBar(menuBar);
-		this.add(label, BorderLayout.CENTER);
-		label.setFont(new Font("SansSerif", Font.PLAIN, 48));
-		this.setBounds(0,0,FRAME_WIDTH,FRAME_HEIGHT);
-		this.setTitle("Sheffield Robot Football Controller");
-		this.addKeyListener(this);
-		this.addWindowListener(this);
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setVisible(true);
-	}
+    public EV3football() {
+	JMenuBar menuBar = new JMenuBar();
+	JMenu menu = new JMenu("Quit");
+	JMenuItem menuItem = new JMenuItem("Really Quit?");
+	menuItem.addActionListener(this);
+	menu.add(menuItem);
+	menuBar.add(menu);
+	this.setJMenuBar(menuBar);
+	this.add(label, BorderLayout.CENTER);
+	label.setFont(new Font("SansSerif", Font.PLAIN, 48));
+	this.setBounds(0,0,FRAME_WIDTH,FRAME_HEIGHT);
+	this.setTitle("Sheffield Robot Football Controller");
+	this.addKeyListener(this);
+	this.addWindowListener(this);
+	this.setLocationRelativeTo(null);
+	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	this.setVisible(true);
+    }
 	
-	// Start the program	
-	private Command command = Command.STOP;	
-	private Robot myRobot = new Robot();	 
-	public static void main(String[] args) {
-		Thread t = new Thread(new EV3football());
-		t.start();
-	}
+    // Start the program	
+    private Command command = Command.STOP;	
+    private Robot myRobot = new Robot();
+	
+    public static void main(String[] args) {
+	Thread t = new Thread(new EV3football());
+	t.start();
+    }
 
-	// Select the command corresponding to the key pressed	
-	public void keyPressed(KeyEvent e) {
-		switch ( e.getKeyCode()) {
-			case java.awt.event.KeyEvent.VK_UP:
-				command = Command.FORWARD;
-				break;
-			case java.awt.event.KeyEvent.VK_DOWN:
-				command = Command.REVERSE;
-				break;
-			case java.awt.event.KeyEvent.VK_LEFT:
-				command = Command.LEFT;
-				break;
-			case java.awt.event.KeyEvent.VK_RIGHT:
-				command = Command.RIGHT;
-				break;
-			case java.awt.event.KeyEvent.VK_SPACE:
-				command = Command.KICK;
-				break;
-			default:
-				command = Command.STOP;
-				break;
-		}
+    // Select the command corresponding to the key pressed	
+    public void keyPressed(KeyEvent e) {
+	switch ( e.getKeyCode()) {
+		case java.awt.event.KeyEvent.VK_UP:
+			command = Command.FORWARD;
+			break;
+		case java.awt.event.KeyEvent.VK_DOWN:
+			command = Command.REVERSE;
+			break;
+		case java.awt.event.KeyEvent.VK_LEFT:
+			command = Command.LEFT;
+			break;
+		case java.awt.event.KeyEvent.VK_RIGHT:
+			command = Command.RIGHT;
+			break;
+		case java.awt.event.KeyEvent.VK_SPACE:
+			command = Command.KICK;
+			break;
+		default:
+			command = Command.STOP;
+			break;
 	}
+    }
     //and released
-	public void keyReleased(KeyEvent e) {
-		command = Command.STOP;
-	}
-	//ignore everything else
-	public void keyTyped(KeyEvent e) {}	
-	public void windowActivated(WindowEvent e) {}
-	public void windowClosed(WindowEvent e) {}	
-	public void windowDeactivated(WindowEvent e) {}
-	public void windowDeiconified(WindowEvent e) {}
-	public void windowIconified(WindowEvent e) {}
-	public void windowOpened(WindowEvent e) {}
+    public void keyReleased(KeyEvent e) {
+	command = Command.STOP;
+    }
+    //ignore everything else
+    public void keyTyped(KeyEvent e) {}	
+    public void windowActivated(WindowEvent e) {}
+    public void windowClosed(WindowEvent e) {}	
+    public void windowDeactivated(WindowEvent e) {}
+    public void windowDeiconified(WindowEvent e) {}
+    public void windowIconified(WindowEvent e) {}
+    public void windowOpened(WindowEvent e) {}
 	
-	// handle the quit menu item	
-	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Really Quit?")) {
-			System.out.println("Closing Bluetooth");
-			myRobot.close();
-			System.exit(0);
-		}
-	}
-	//and the window closing
-	public void windowClosing(WindowEvent e) {
+    // handle the quit menu item	
+    public void actionPerformed(ActionEvent e) {
+	if (e.getActionCommand().equals("Really Quit?")) {
 		System.out.println("Closing Bluetooth");
 		myRobot.close();
+		System.exit(0);
 	}
+    }
+	
+    //and the window closing
+    public void windowClosing(WindowEvent e) {
+	System.out.println("Closing Bluetooth");
+	myRobot.close();
+    }
 
-	/*
-	 * THIS IS THE ONLY PART OF THE PROGRAM THAT YOU NEED TO EDIT
+   /*
+     * THIS IS THE ONLY PART OF THE PROGRAM THAT YOU NEED TO EDIT
      * @author Suen Tsz Ching
     */
-	 
-
     public static void stopMoving(){
     	leftMotor.setSpeed(NONE_SPEED);
     	rightMotor.setSpeed(NONE_SPEED);
@@ -164,7 +164,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	rightMotor.flt(true);
     }
 
-	public static void reverseMoving(){
+    public static void reverseMoving(){
 		speaker.playTone(MOVING_TIME, MOVING_SPEED);
 
     	leftMotor.setPower(HIGH_POWER);
@@ -175,7 +175,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	rightMotor.backward();
     	leftMotor.flt(true);
     	rightMotor.flt(true);
-	}
+    }
 
     public static void turnLeft(){
     	speaker.playTone(TURNING_TIME, TURNING_SPEED);
@@ -191,9 +191,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 
    		myRobot.sleep(TURNING_TIME);
    	    rightMotor.stop();
-	}
+    }
 
-	public static void turnRight(){
+    public static void turnRight(){
 		speaker.playTone(TURNING_TIME, TURNING_SPEED);
 
     	leftMotor.setPower(LOW_POWER);
@@ -207,9 +207,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
  
     	myRobot.sleep(TURNING_TIME);
     	leftMotor.stop();
-	}
+    }
 
-	public static void kickBall(int rotationDegrees){
+    public static void kickBall(int rotationDegrees){
         speaker.playTone(TURNING_TIME, TURNING_SPEED);
         leftMotor.setPower(HIGH_POWER);
     	rightMotor.setPower(HIGH_POWER);
@@ -236,9 +236,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
         }
         leftMotor.flt(true);
     	rightMotor.flt(true);
-	}
+    }
 
-	public static void initialization(){
+    public static void initialization(){
         Delay.msDelay(3000);
     	myRobot.sleep(MOVING_TIME);
 
@@ -251,20 +251,20 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	mediumMotor.setSpeed(LOW_SPEED);
 
     	System.out.println("There are some errors!");
-	}
+    }
 
 
     // @author Suen Tsz Ching
     public void run() {
-		// This defines and names the two large motors that turn the wheels
-		// Motor leftMotor = myRobot.getLargeMotor(Motor.Port.B);
-		// Motor rightMotor = myRobot.getLargeMotor(Motor.Port.C);
+	// This defines and names the two large motors that turn the wheels
+	// Motor leftMotor = myRobot.getLargeMotor(Motor.Port.B);
+	// Motor rightMotor = myRobot.getLargeMotor(Motor.Port.C);
 
-		// Motor mediumMotor = myRobot.getMediumMotor(Motor.Port.A);
+	// Motor mediumMotor = myRobot.getMediumMotor(Motor.Port.A);
         // Speaker speaker = myRobot.getSpeaker();
 
 		
-       //put your code to define other things here
+        //put your code to define other things here
 
 		while (true) {
 			switch (command) {
