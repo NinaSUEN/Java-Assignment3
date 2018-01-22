@@ -73,7 +73,7 @@ public class Assignment3{
         System.out.println("Trying to find a black line!");
         mainRobot.forwardMoving();
 
-        if((System.currentTimeMillis() > 20) || (mainRobot.isMoving() != false)){
+        if((System.currentTimeMillis() < 20) || (mainRobot.isMoving() != false)){
         while(mainArea() != AreaEnum.BLACK_LINE){
 
             mainRobot.forwardMoving();
@@ -102,7 +102,7 @@ public class Assignment3{
 		    System.out.println("Trying to follow a black line!");
 		    mainRobot.forwardMoving();
 
-		    if((System.currentTimeMillis() > 20) || (mainRobot.isMoving() != false)){
+		    if((System.currentTimeMillis() < 20) || (mainRobot.isMoving() != false)){
 
 		    while(mainArea() == AreaEnum.BLACK_LINE){
 
