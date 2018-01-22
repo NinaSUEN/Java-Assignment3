@@ -3,7 +3,7 @@ Written by: Bryn Berkeley, Panagiotis Antoniou, Tsz Ching Suen
 */
 import ShefRobot.*;
 
-public class Assignment3{
+public class Assignment{
 	
 	public static Robot myRobot = new Robot();
 	
