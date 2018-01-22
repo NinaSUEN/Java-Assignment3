@@ -205,16 +205,16 @@ public class Assignment3{
 
     	//getColor = colorSensor.getColor();
    	    
-   	    if(mainRobot.getColor.equals(BLACK)){
+   	    if(mainRobot.getColor().equals(BLACK)){
             return MainStatus.Color.BLACK;
    	    }
-   	    else if(mainRobot.getColor.equals(WHITE)){
+   	    else if(mainRobot.getColor().equals(WHITE)){
      		    return MainStatus.Color.BLACK;
    	    }
-   	    else if(mainRobot.getColor.equals(BLUE)){
+   	    else if(mainRobot.getColor().equals(BLUE)){
             return MainStatus.Color.BLUE;
    	    }
-   	    else if(mainRobot.getColor.equals(NONE)){
+   	    else if(mainRobot.getColor().equals(NONE)){
             return MainStatus.Color.NONE;
    	    }
    	    else{
