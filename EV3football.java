@@ -141,8 +141,13 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     }
 
    /*
-     * THIS IS THE ONLY PART OF THE PROGRAM THAT YOU NEED TO EDIT
-     * @author Suen Tsz Ching
+    * THIS IS THE ONLY PART OF THE PROGRAM THAT YOU NEED TO EDIT
+    * @author Suen Tsz Ching
+    */
+	
+   /*
+    * @author Suen Tsz Ching
+    * Stops both wheels, the robot will stop moving when this method was called.
     */
     public static void stopMoving(){
     	leftMotor.setSpeed(NONE_SPEED);
@@ -151,6 +156,10 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	rightMotor.stop();
     }
 
+   /*
+    * @author Suen Tsz Ching
+    * Calls the robot to move forward with moving speed
+    */	 
     public static void forwardMoving(){
     	speaker.playTone(MOVING_TIME, MOVING_SPEED);
 
@@ -163,9 +172,13 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	leftMotor.flt(true);
     	rightMotor.flt(true);
     }
-
+ 
+   /*
+    * @author Suen Tsz Ching
+    * Calls the robot to move reverse with moving speed
+    */
     public static void reverseMoving(){
-		speaker.playTone(MOVING_TIME, MOVING_SPEED);
+	speaker.playTone(MOVING_TIME, MOVING_SPEED);
 
     	leftMotor.setPower(HIGH_POWER);
     	rightMotor.setPower(HIGH_POWER);		
@@ -177,24 +190,32 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	rightMotor.flt(true);
     }
 
+   /*
+    * @author Suen Tsz Ching
+    * Calls the robot to turn left with turning speed
+    */
     public static void turnLeft(){
     	speaker.playTone(TURNING_TIME, TURNING_SPEED);
 
     	leftMotor.setPower(LOW_POWER);
     	rightMotor.setPower(LOW_POWER);	
-   		leftMotor.setSpeed(NONE_SPEED);
-   	    rightMotor.setSpeed(TURNING_SPEED);
-   		leftMotor.backward();
-   		rightMotor.forward();
-   		leftMotor.flt(true);
+   	leftMotor.setSpeed(NONE_SPEED);
+   	rightMotor.setSpeed(TURNING_SPEED);
+   	leftMotor.backward();
+   	rightMotor.forward();
+   	leftMotor.flt(true);
     	rightMotor.flt(true);
 
-   		myRobot.sleep(TURNING_TIME);
-   	    rightMotor.stop();
+   	myRobot.sleep(TURNING_TIME);
+   	rightMotor.stop();
     }
 
+   /*
+    * @author Suen Tsz Ching
+    * Calls the robot to turn right with turning speed
+    */
     public static void turnRight(){
-		speaker.playTone(TURNING_TIME, TURNING_SPEED);
+	speaker.playTone(TURNING_TIME, TURNING_SPEED);
 
     	leftMotor.setPower(LOW_POWER);
     	rightMotor.setPower(LOW_POWER);		
@@ -209,6 +230,11 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	leftMotor.stop();
     }
 
+   /*
+    * @author Suen Tsz Ching
+    * @param integer ratation degree 
+    * Calls the medium motor to move if the ratation degree matched the condition, makes the robot to grab a ball.
+    */
     public static void kickBall(int rotationDegrees){
         speaker.playTone(TURNING_TIME, TURNING_SPEED);
         leftMotor.setPower(HIGH_POWER);
@@ -238,6 +264,10 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	rightMotor.flt(true);
     }
 
+   /*
+    * @author Suen Tsz Ching
+    * initialize the robot when an error was occurred.
+    */
     public static void initialization(){
         Delay.msDelay(3000);
     	myRobot.sleep(MOVING_TIME);
@@ -254,8 +284,12 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     }
 
 
-    // @author Suen Tsz Ching
+   /*
+    * @author Suen Tsz Ching
+    * Calls the different moving methods when a keyboard command was called.
+    */
     public void run() {
+	    
 	// This defines and names the two large motors that turn the wheels
 	// Motor leftMotor = myRobot.getLargeMotor(Motor.Port.B);
 	// Motor rightMotor = myRobot.getLargeMotor(Motor.Port.C);
@@ -271,40 +305,34 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 				case STOP:
 					label.setText("Stop");
 					System.out.println("Moving Forward...");
-					stopMoving();
-					
+					stopMoving();					
 					break;					
 				case FORWARD:
 					label.setText("Forward");				
 					System.out.println("Moving Forward...");
-					forwardMoving();
-					
+					forwardMoving();					
 					break;					
 				case REVERSE:
 					label.setText("Reverse");
 					System.out.println("Moving Reverse...");
 					reverseMoving();
-					
 					break;					
 				case LEFT:
 					label.setText("Left");
 					System.out.println("Turning around...");
   					turnLeft();
   					System.out.println("Turning to LEFT!");
-
 					break;
 				case RIGHT:
 					label.setText("Right");
 					System.out.println("Turning around...");
-    				turnRight();
-    				System.out.println("Turning to RIGHT!");
-
+    				        turnRight();
+    				        System.out.println("Turning to RIGHT!");
 					break;
 				case KICK:
 					label.setText("Kick");
 					System.out.println("Loading the Motor...");
-    				kickBall();
-
+    				        kickBall();
  					break;
 			}
 			try {
