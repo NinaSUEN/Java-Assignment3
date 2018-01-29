@@ -4,16 +4,16 @@
 
 // import ColorSensor
 import ShefRobot.*;
-import ShefRobot.ColorSensor.Color.*;
 import sheffield.*;
+import ShefRobot.ColorSensor.Color.*;
 
 
 public class MainStatus{
 
-    public static final ColorSensor.Color WHITE;
-    public static final ColorSensor.Color BLACK;
-    public static final ColorSensor.Color BLUE;
-    public static final ColorSensor.Color NONE;
+//     public static final ColorSensor.Color WHITE;
+//     public static final ColorSensor.Color BLACK;
+//     public static final ColorSensor.Color BLUE;
+//     public static final ColorSensor.Color NONE;
 
     public static enum Color {BLACK, WHITE, BLUE, NONE};
     public static enum BallStatus {YES, NO, OTHER};
@@ -32,20 +32,19 @@ public class MainStatus{
     	this.colour = colour;
     }
 
-    public static Color getColour(){
-     	return Colour;
+    public Color getColour(){
+     	return colour;
     }
-
 
     public void setBallstatus(BallStatus ballstatus){
    	    this.ballstatus = ballstatus;
     }
 
-    public static ballstatus getBallstatus(){
+    public BallStatus getBallstatus(){
    	    return ballstatus;
     }
 
-    public static String toString(){
+    public String toString(){
     	return "Our Robot's information : " + "\nColour : " + colour + ", Status : " + ballstatus;
     }
 
