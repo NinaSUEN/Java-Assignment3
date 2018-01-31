@@ -23,7 +23,7 @@ import javax.swing.JMenuItem;
 
 public class EV3football extends JFrame implements Runnable, KeyListener, WindowListener, ActionListener {
 	
-	//create a object of Robot type
+	//create an object of Robot type
 	public static Robot myRobot = new Robot();
 	
 	//create some motor objects of Motor type, Sensor type and Speaker type 
