@@ -2,10 +2,6 @@
 * Sheffield University Robot Football Controller
 * Guy Brown September 2008, amended Siobhan North 2014
 * Rewritten for EV3 robots SDN 2016
-* 
-* SCROLL DOWN TO THE BOTTOM OF THE PROGRAM
-* YOU DO NOT NEED TO UNDERSTAND (OR EDIT) ANYTHING APART FROM THE
-* MARKED SECTIONS OF THE PROGRAM
 */
 
 import ShefRobot.*;
@@ -27,15 +23,17 @@ import javax.swing.JMenuItem;
 
 public class EV3football extends JFrame implements Runnable, KeyListener, WindowListener, ActionListener {
 	
+	//static object
 	public static Robot myRobot = new Robot();
 	
+	//static attributes
     	public static ColorSensor colorSensor = myRobot.getColorSensor(Sensor.Port.S2);
-
     	public static Motor leftMotor = myRobot.getLargeMotor(Motor.Port.C);
     	public static Motor rightMotor = myRobot.getLargeMotor(Motor.Port.A);
     	public static Motor mediumMotor = myRobot.getMediumMotor(Motor.Port.B);
     	public static Speaker speaker = myRobot.getSpeaker();
-
+	
+	//static constants to be used 
     	public static final int NONE_SPEED = 0;
     	public static final int MOVING_SPEED = 200;
     	public static final int TURNING_SPEED = 60;
@@ -46,7 +44,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	public static final int SLEEP_TIME=500;
 
 
-    	//Defining the behaviour of the prgram
+    	//Defining the behaviour of the program
 	enum Command {STOP, LEFT, RIGHT, FORWARD, REVERSE, RAISE, LOWER, DANCE};
 	private static final int DELAY_MS = 50;
 	
@@ -78,8 +76,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 	// Start the program	
 	private Command command = Command.STOP;	
 
+	
 	// Select the command corresponding to the key pressed	
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent e) {	
 		switch ( e.getKeyCode()) {
 			case java.awt.event.KeyEvent.VK_UP:
 				command = Command.FORWARD;
@@ -122,7 +121,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 	public void windowIconified(WindowEvent e) {}
 	public void windowOpened(WindowEvent e) {}
 	
-	// handle the quit menu item	
+	//handle the quit menu item	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Really Quit?")) {
 			System.out.println("Closing Bluetooth");
@@ -136,15 +135,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 		myRobot.close();
 	}
 
-
-	/*
-	 * THIS IS THE ONLY PART OF THE PROGRAM THAT YOU NEED TO EDIT
-	 */
-
-
-    	/*
-    	* @author Suen Tsz Ching
-    	* Stops both wheels, the robot will stop moving when this method was called.
+    	/**
+    	*Stops both wheels, the robot will stop moving when this method was called. 
+	*@author Bryn Berkeley 
     	*/
     	public static void stopMoving(){
     		leftMotor.stop();
@@ -152,9 +145,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     		mediumMotor.stop();
    	}
 
-   	/*
-    	* @author Suen Tsz Ching
+   	/**
     	* Calls the robot to move forward with moving speed
+	* @author Suen Tsz Ching
     	*/	 
     	public static void forwardMoving(){
     		leftMotor.setSpeed(MOVING_SPEED);
@@ -164,9 +157,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	}
  
 
-   	/*
-    	* @author Suen Tsz Ching
-    	* Calls the robot to move reverse with moving speed
+   	/**
+	* Calls the robot to move reverse with moving speed
+    	* @author Panagiotis Antoniou
     	*/
     	public static void reverseMoving(){
     		leftMotor.setSpeed(MOVING_SPEED);
@@ -175,9 +168,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     		rightMotor.backward();
    	}
 
-   	/*
-    	* @author Suen Tsz Ching
-    	* Calls the robot to turn left with turning speed
+   	/**
+	* Calls the robot to turn left with turning speed
+    	* @author Bryn Berkeley
     	*/
     	public static void turnLeft(){
    	    	leftMotor.setSpeed(TURNING_SPEED);
@@ -186,9 +179,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
    	    	rightMotor.forward();
     	}
 
-   	/*
-    	* @author Suen Tsz Ching
-    	* Calls the robot to turn right with turning speed
+   	/**
+	* Calls the robot to turn right with turning speed
+    	* @author Bryn Berkeley 
     	*/
     	public static void turnRight(){
     		leftMotor.setSpeed(TURNING_SPEED);
@@ -198,10 +191,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
    	}
 
 
-   	/*
-    	* @author Suen Tsz Ching
-    	* @param integer ratation degree 
-    	* Calls the medium motor to move if the ratation degree matched the condition, makes the robot to grab a ball.
+   	/**
+	* Calls the medium motor to raise up the trap to make the robot release the ball.
+    	* @author Panagiotis Antoniou
     	*/
     	public static void raise(){
         	mediumMotor.setSpeed(MOVING_SPEED);
@@ -210,15 +202,18 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 
 
        	/**
+	* Calls the medium motor to lower down the trap to trap the ball.
     	* @author Suen Tsz Ching
-    	* @param integer ratation degree 
-    	* Calls the medium motor to move if the ratation degree matched the condition, makes the robot to grab a ball.
     	*/
     	public static void lower(){
         	mediumMotor.setSpeed(MOVING_SPEED);
         	mediumMotor.backward();
     	}
-    
+    	
+	/**
+	* Makes the robot dance 
+    	* @author Panagiotis Antoniou
+    	*/
    	public static void waggleDance(){
 		for (int t=0; t<DANCE_TIMES; t++){
 			leftMotor.setSpeed(MOVING_SPEED);
@@ -232,6 +227,10 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 		}
 	}
 	
+	/**
+	* Makes the robot dance 
+    	* @author Bryn Berkeley, Suen Tsz Ching, Panagiotis Antoniou, Tiange Xiang
+    	*/
 	public void run() {
         	while (true) {
 			switch (command) {
@@ -253,11 +252,11 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 					break;
 				case RIGHT:
 					label.setText("Right");
-    				turnRight();
+    					turnRight();
 					break;
 				case RAISE:
 					label.setText("Raise");
-    				raise();
+    					raise();
  					break;
  				case LOWER:
  				    	label.setText("Lower");
