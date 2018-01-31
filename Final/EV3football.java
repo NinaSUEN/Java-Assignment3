@@ -23,10 +23,10 @@ import javax.swing.JMenuItem;
 
 public class EV3football extends JFrame implements Runnable, KeyListener, WindowListener, ActionListener {
 	
-	//static object
+	//create a object of Robot type
 	public static Robot myRobot = new Robot();
 	
-	//static attributes
+	//create some motor objects of Motor type, Sensor type and Speaker type 
     	public static ColorSensor colorSensor = myRobot.getColorSensor(Sensor.Port.S2);
     	public static Motor leftMotor = myRobot.getLargeMotor(Motor.Port.C);
     	public static Motor rightMotor = myRobot.getLargeMotor(Motor.Port.A);
@@ -40,8 +40,8 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	public static final int LOW_SPEED = 50;
     	public static final int MOVING_TIME = 1000;
     	public static final int TURNING_TIME = 600;
-    	public static final int DANCE_TIMES=10;
-    	public static final int SLEEP_TIME=500;
+    	public static final int DANCE_TIMES = 10;
+    	public static final int SLEEP_TIME = 500;
 
 
     	//Defining the behaviour of the program
