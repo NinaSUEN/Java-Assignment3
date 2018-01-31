@@ -27,27 +27,26 @@ import javax.swing.JMenuItem;
 
 public class EV3football extends JFrame implements Runnable, KeyListener, WindowListener, ActionListener {
 	
-
-    public static Robot myRobot = new Robot();
+	public static Robot myRobot = new Robot();
 	
-    public static ColorSensor colorSensor = myRobot.getColorSensor(Sensor.Port.S2);
+    	public static ColorSensor colorSensor = myRobot.getColorSensor(Sensor.Port.S2);
 
-    public static Motor leftMotor = myRobot.getLargeMotor(Motor.Port.C);
-    public static Motor rightMotor = myRobot.getLargeMotor(Motor.Port.A);
-    public static Motor mediumMotor = myRobot.getMediumMotor(Motor.Port.B);
-    public static Speaker speaker = myRobot.getSpeaker();
+    	public static Motor leftMotor = myRobot.getLargeMotor(Motor.Port.C);
+    	public static Motor rightMotor = myRobot.getLargeMotor(Motor.Port.A);
+    	public static Motor mediumMotor = myRobot.getMediumMotor(Motor.Port.B);
+    	public static Speaker speaker = myRobot.getSpeaker();
 
-    public static final int NONE_SPEED = 0;
-    public static final int MOVING_SPEED = 200;
-    public static final int TURNING_SPEED = 60;
-    public static final int LOW_SPEED = 50;
-    public static final int MOVING_TIME = 1000;
-    public static final int TURNING_TIME = 600;
-    public static final int DANCE_TIMES=10;
-    public static final int SLEEP_TIME=500;
+    	public static final int NONE_SPEED = 0;
+    	public static final int MOVING_SPEED = 200;
+    	public static final int TURNING_SPEED = 60;
+    	public static final int LOW_SPEED = 50;
+    	public static final int MOVING_TIME = 1000;
+    	public static final int TURNING_TIME = 600;
+    	public static final int DANCE_TIMES=10;
+    	public static final int SLEEP_TIME=500;
 
 
-	//Defining the behaviour of the prgram
+    	//Defining the behaviour of the prgram
 	enum Command {STOP, LEFT, RIGHT, FORWARD, REVERSE, RAISE, LOWER, DANCE};
 	private static final int DELAY_MS = 50;
 	
@@ -109,7 +108,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 		}
 	}
 
-    //and released
+    	//and released
 	public void keyReleased(KeyEvent e) {
 		command = Command.STOP;
 	}
@@ -143,86 +142,84 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 	 */
 
 
-    /*
-    * @author Suen Tsz Ching
-    * Stops both wheels, the robot will stop moving when this method was called.
-    */
-    public static void stopMoving(){
-    	leftMotor.stop();
-    	rightMotor.stop();
-    	mediumMotor.stop();
-    }
+    	/*
+    	* @author Suen Tsz Ching
+    	* Stops both wheels, the robot will stop moving when this method was called.
+    	*/
+    	public static void stopMoving(){
+    		leftMotor.stop();
+    		rightMotor.stop();
+    		mediumMotor.stop();
+   	}
 
-   /*
-    * @author Suen Tsz Ching
-    * Calls the robot to move forward with moving speed
-    */	 
-    public static void forwardMoving(){
-    	leftMotor.setSpeed(MOVING_SPEED);
-    	rightMotor.setSpeed(MOVING_SPEED);
-    	leftMotor.forward();
-    	rightMotor.forward();
-    }
+   	/*
+    	* @author Suen Tsz Ching
+    	* Calls the robot to move forward with moving speed
+    	*/	 
+    	public static void forwardMoving(){
+    		leftMotor.setSpeed(MOVING_SPEED);
+    		rightMotor.setSpeed(MOVING_SPEED);
+    		leftMotor.forward();
+    		rightMotor.forward();
+    	}
  
 
-   /*
-    * @author Suen Tsz Ching
-    * Calls the robot to move reverse with moving speed
-    */
-    public static void reverseMoving(){
-    	leftMotor.setSpeed(MOVING_SPEED);
-    	rightMotor.setSpeed(MOVING_SPEED);
-    	leftMotor.backward();
-    	rightMotor.backward();
-    }
+   	/*
+    	* @author Suen Tsz Ching
+    	* Calls the robot to move reverse with moving speed
+    	*/
+    	public static void reverseMoving(){
+    		leftMotor.setSpeed(MOVING_SPEED);
+    		rightMotor.setSpeed(MOVING_SPEED);
+    		leftMotor.backward();
+    		rightMotor.backward();
+   	}
 
-   /*
-    * @author Suen Tsz Ching
-    * Calls the robot to turn left with turning speed
-    */
-    public static void turnLeft(){
-   	    leftMotor.setSpeed(TURNING_SPEED);
-   	    rightMotor.setSpeed(TURNING_SPEED);
-   	    leftMotor.backward();
-   	    rightMotor.forward();
-    }
+   	/*
+    	* @author Suen Tsz Ching
+    	* Calls the robot to turn left with turning speed
+    	*/
+    	public static void turnLeft(){
+   	    	leftMotor.setSpeed(TURNING_SPEED);
+   	    	rightMotor.setSpeed(TURNING_SPEED);
+   	    	leftMotor.backward();
+   	    	rightMotor.forward();
+    	}
 
-   /*
-    * @author Suen Tsz Ching
-    * Calls the robot to turn right with turning speed
-    */
-    public static void turnRight(){
-    	leftMotor.setSpeed(TURNING_SPEED);
-    	rightMotor.setSpeed(TURNING_SPEED);
-    	leftMotor.forward();
-    	rightMotor.backward();
-    }
-
-
-   /*
-    * @author Suen Tsz Ching
-    * @param integer ratation degree 
-    * Calls the medium motor to move if the ratation degree matched the condition, makes the robot to grab a ball.
-    */
-    public static void raise(){
-        
-        mediumMotor.setSpeed(MOVING_SPEED);
-        mediumMotor.forward();
-    }
+   	/*
+    	* @author Suen Tsz Ching
+    	* Calls the robot to turn right with turning speed
+    	*/
+    	public static void turnRight(){
+    		leftMotor.setSpeed(TURNING_SPEED);
+    		rightMotor.setSpeed(TURNING_SPEED);
+    		leftMotor.forward();
+    		rightMotor.backward();
+   	}
 
 
-       /*
-    * @author Suen Tsz Ching
-    * @param integer ratation degree 
-    * Calls the medium motor to move if the ratation degree matched the condition, makes the robot to grab a ball.
-    */
-    public static void lower(){
+   	/*
+    	* @author Suen Tsz Ching
+    	* @param integer ratation degree 
+    	* Calls the medium motor to move if the ratation degree matched the condition, makes the robot to grab a ball.
+    	*/
+    	public static void raise(){
+        	mediumMotor.setSpeed(MOVING_SPEED);
+        	mediumMotor.forward();
+    	}
 
-        mediumMotor.setSpeed(MOVING_SPEED);
-        mediumMotor.backward();
-    }
+
+       	/**
+    	* @author Suen Tsz Ching
+    	* @param integer ratation degree 
+    	* Calls the medium motor to move if the ratation degree matched the condition, makes the robot to grab a ball.
+    	*/
+    	public static void lower(){
+        	mediumMotor.setSpeed(MOVING_SPEED);
+        	mediumMotor.backward();
+    	}
     
-    public static void waggleDance(){
+   	public static void waggleDance(){
 		for (int t=0; t<DANCE_TIMES; t++){
 			leftMotor.setSpeed(MOVING_SPEED);
 			rightMotor.setSpeed(MOVING_SPEED);
@@ -234,11 +231,9 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 			myRobot.sleep(SLEEP_TIME*2);
 		}
 	}
-
-
+	
 	public void run() {
-
-        while (true) {
+        	while (true) {
 			switch (command) {
 				case STOP:
 					label.setText("Stop");
@@ -265,13 +260,13 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     				raise();
  					break;
  				case LOWER:
- 				    label.setText("Lower");
-                    lower();
- 				    break;
+ 				    	label.setText("Lower");
+                    		    	lower();
+ 				    	break;
  				case DANCE:
- 				    label.setText("Dance");
-                    waggleDance();
- 				    break;
+ 				    	label.setText("Dance");
+                    		    	waggleDance();
+ 				    	break;
 			}
 			try {
 				Thread.sleep(DELAY_MS);
