@@ -1,7 +1,7 @@
 /**
 * This is the main class which includes the following the line method and has an object of class EV3football
 * that uses its methods for controlling the robot. 
-* @authors Bryn Berkeley, Suen Tsz Ching, Panagiotis Antoniou, Tiange Xiang
+* @author Bryn Berkeley, Suen Tsz Ching, Panagiotis Antoniou, Tiange Xiang
 */
 
 //use the package that includes all the methods of the Robot.
@@ -13,7 +13,7 @@ public class Assignment3{
 	
 	//enum that represents the area that the robot will be demonstrated
 	public static enum AreaEnum {BLACK_LINE, WHITE_AREA, BLUE_AREA, ERROR};
-    public static AreaEnum areaCode;
+    	public static AreaEnum areaCode;
 	
 	/**
 	* the main method 
@@ -57,25 +57,25 @@ public class Assignment3{
           	areaCode = AreaEnum.ERROR;
     	}
         return areaCode;
-    }
+    	}
 
     
     
 	/**
 	* Makes the robot move forward
-	* @authors Bryn Berkeley
+	* @author Bryn Berkeley
 	*/
    	public static void keepMovingForward(){
         mainRobot.leftMotor.setSpeed(mainRobot.MOVING_SPEED);
         mainRobot.rightMotor.setSpeed(mainRobot.MOVING_SPEED);
         mainRobot.leftMotor.forward();
         mainRobot.rightMotor.forward();
-    }
+    	}
 	
 	/**
 	* Makes the robot follow the black line and try to find the black line
 	* if the robot loses it
-	* @authors  Panagiotis Antoniou, Suen Tsz Ching, Bryn Berkeley, Tiange Xiang
+	* @author  Panagiotis Antoniou, Suen Tsz Ching, Bryn Berkeley, Tiange Xiang
 	*/
     
    	public static void followTheBlackLine(){
@@ -85,11 +85,11 @@ public class Assignment3{
 		
     	int counter=0;
     	while (mainArea() != AreaEnum.ERROR){	
-			//if it detects the black line reset the counter and move forward
+		//if it detects the black line reset the counter and move forward
     		while (mainArea() == AreaEnum.BLACK_LINE){
     			counter=0;
     			System.out.println("Black");
-	 			keepMovingForward();
+	 		keepMovingForward();
 	 		}
 		
 		while (mainArea() == AreaEnum.BLUE_AREA){
@@ -115,11 +115,11 @@ public class Assignment3{
 		}
 	}
 		
-    }
+    	}
   	
 	/**
 	* A method that decides what happens after the robot is in the Blue Area
-	* @authors Suen Tsz Ching
+	* @author Suen Tsz Ching
 	*/
 	public static void getIntoTheBlueArea(){
 
