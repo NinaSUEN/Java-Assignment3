@@ -8,7 +8,8 @@
 import ShefRobot.*;
 
 public class Assignment3{
-	//new static object to use the methods of EV3football class for controlling the robot.
+	
+	//get a reference of EV3football class for our robot
 	public static EV3football mainRobot = new EV3football();
 	
 	//enum that represents the area that the robot will be demonstrated
