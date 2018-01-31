@@ -47,17 +47,7 @@ public class Football extends JFrame implements Runnable, KeyListener, WindowLis
 
     public static float currentDistance = ultrasonicSensor.getDistance();
 
-	
-    //public static ColorSensor colorSensor = myRobot.getColorSensor(Sensor.Port.S2);
-    //public static UltrasonicSensor ultrasonicSensor = myRobot.getUltrasonicSensor(Sensor.Port.S1);
-
-    // public Motor leftMotor = myRobot.getLargeMotor(Motor.Port.B);
-    // public Motor rightMotor = myRobot.getLargeMotor(Motor.Port.C);
-    // public Motor mediumMotor = myRobot.getMediumMotor(Motor.Port.A);
-    // public Speaker speaker = myRobot.getSpeaker();
-   
-
-
+  
 	//Defining the behaviour of the prgram
 	enum Command {STOP, LEFT, RIGHT, FORWARD, REVERSE, PUT, GET};
 	private static final int DELAY_MS = 50;
@@ -94,11 +84,11 @@ public class Football extends JFrame implements Runnable, KeyListener, WindowLis
 	public static void main(String[] args) {
 		Thread t = new Thread(new Football());
 		t.start();
-     
-        Assignment.followTheBlackLine();
 
         leftMotor.run(); 
-        rightMotor.run();  
+        rightMotor.run();
+	mediumMotor.run();
+	
 	}
 
 
@@ -167,9 +157,9 @@ public class Football extends JFrame implements Runnable, KeyListener, WindowLis
     * @author Suen Tsz Ching
     * Stops both wheels, the robot will stop moving when this method was called.
     */
-    public void stopMoving(){
-    	leftMotor.setSpeed(NONE_SPEED);
-    	rightMotor.setSpeed(NONE_SPEED);
+    public static void stopMoving(){
+//     	leftMotor.setSpeed(NONE_SPEED);
+//     	rightMotor.setSpeed(NONE_SPEED);
     	leftMotor.stop();
     	rightMotor.stop();
     }
@@ -178,15 +168,15 @@ public class Football extends JFrame implements Runnable, KeyListener, WindowLis
     * @author Suen Tsz Ching
     * Calls the robot to move forward with moving speed
     */	 
-    public void forwardMoving(){
-    	speaker.playTone(MOVING_TIME, MOVING_SPEED);
+    public static void forwardMoving(){
+//     	speaker.playTone(MOVING_TIME, MOVING_SPEED);
 
     	leftMotor.setSpeed(MOVING_SPEED);
     	rightMotor.setSpeed(MOVING_SPEED);
     	leftMotor.forward();
     	rightMotor.forward();
-    	leftMotor.stop();
-   	    rightMotor.stop();
+//     	leftMotor.stop();
+//    	rightMotor.stop();
     }
  
 
@@ -194,47 +184,47 @@ public class Football extends JFrame implements Runnable, KeyListener, WindowLis
     * @author Suen Tsz Ching
     * Calls the robot to move reverse with moving speed
     */
-    public void reverseMoving(){
-	    speaker.playTone(MOVING_TIME, MOVING_SPEED);
+    public static void reverseMoving(){
+// 	speaker.playTone(MOVING_TIME, MOVING_SPEED);
 	
     	leftMotor.setSpeed(MOVING_SPEED);
     	rightMotor.setSpeed(MOVING_SPEED);
     	leftMotor.backward();
     	rightMotor.backward();
-    	leftMotor.stop();
-   	    rightMotor.stop();
+//     	leftMotor.stop();
+//    	rightMotor.stop();
     }
 
    /*
     * @author Suen Tsz Ching
     * Calls the robot to turn left with turning speed
     */
-    public void turnLeft(){
-    	speaker.playTone(TURNING_TIME, TURNING_SPEED);
+    public static void turnLeft(){
+//     	speaker.playTone(TURNING_TIME, TURNING_SPEED);
 
-   	    leftMotor.setSpeed(NONE_SPEED);
-   	    rightMotor.setSpeed(TURNING_SPEED);
-   	    leftMotor.backward();
-   	    rightMotor.forward();
+   	leftMotor.setSpeed(NONE_SPEED);
+   	rightMotor.setSpeed(TURNING_SPEED);
+   	leftMotor.backward();
+   	rightMotor.forward();
 
-   	    leftMotor.stop();
-   	    rightMotor.stop();
+//    	leftMotor.stop();
+//      rightMotor.stop();
     }
 
    /*
     * @author Suen Tsz Ching
     * Calls the robot to turn right with turning speed
     */
-    public void turnRight(){
-	    speaker.playTone(TURNING_TIME, TURNING_SPEED);
+    public static void turnRight(){
+// 	speaker.playTone(TURNING_TIME, TURNING_SPEED);
 		
     	leftMotor.setSpeed(TURNING_SPEED);
     	rightMotor.setSpeed(NONE_SPEED);
     	leftMotor.forward();
     	rightMotor.backward();
 
-    	leftMotor.stop();
-   	    rightMotor.stop();
+//     	leftMotor.stop();
+//    	rightMotor.stop();
     }
 
 
@@ -243,10 +233,8 @@ public class Football extends JFrame implements Runnable, KeyListener, WindowLis
     * @param integer ratation degree 
     * Calls the medium motor to move if the ratation degree matched the condition, makes the robot to grab a ball.
     */
-    public void getBall(){
+    public static void getBall(){
         //speaker.playTone(TURNING_TIME, TURNING_SPEED);
-
-        // mediumMotor.setSpeed(LOW_SPEED);
 
         // if(rotationDegrees <= 180 && rotationDegrees > 0){
         // 	mediumMotor.rotate((180+rotationDegrees), true);
@@ -264,18 +252,19 @@ public class Football extends JFrame implements Runnable, KeyListener, WindowLis
         //     mediumMotor.resetTachoCount();
         //     initialization();
         // }
+	    
+	mediumMotor.setSpeed(LOW_SPEED);
+	mediumMotor.forward();
     }
 
 
-       /*
+     /*
     * @author Suen Tsz Ching
     * @param integer ratation degree 
     * Calls the medium motor to move if the ratation degree matched the condition, makes the robot to grab a ball.
     */
-    public void putBall(){
+    public static void putBall(){
         //speaker.playTone(TURNING_TIME, TURNING_SPEED);
-
-        // mediumMotor.setSpeed(LOW_SPEED);
 
         // if(rotationDegrees <= 180 && rotationDegrees > 0){
         // 	mediumMotor.rotate((180+rotationDegrees), true);
@@ -293,33 +282,14 @@ public class Football extends JFrame implements Runnable, KeyListener, WindowLis
         //     mediumMotor.resetTachoCount();
         //     initialization();
         // }
+	    
+	mediumMotor.setSpeed(LOW_SPEED);
+	mediumMotor.backward();
     }
 
-
- //    /*
- //    * @author Panagiotis Antoniou
- //    * Calls the robot to have a dancing
- //    */
- //    public void waggleDance(){ 
-
-	// 	for (int t=1; t<10; t++){
-	// 		leftMotor.setSpeed(TURNING_SPEED);
-	// 		rightMotor.setSpeed(TURNING_SPEED);
-	// 		leftMotor.forward();
-	// 		rightMotor.backward();
-	// 		rightMotor.forward();
-	// 		leftMotor.backward();
-	// 	}
-	// }
-
-
-
+	// Control the robot
 	public void run() {
 
-		//This defines and names the two large motors that turn the wheels
-		//Motor leftMotor = myRobot.getLargeMotor(Motor.Port.B);
-		//Motor rightMotor = myRobot.getLargeMotor(Motor.Port.C);
-		
        //put your code to define other things here
 
         while (true) {
@@ -349,18 +319,18 @@ public class Football extends JFrame implements Runnable, KeyListener, WindowLis
 					label.setText("Right");
 					System.out.println("Turning around...");
     				turnRight();
-    				System.out.println("Turning to RIGHT!");
+    				        System.out.println("Turning to RIGHT!");
 					break;
 				case GET:
 					label.setText("Get");
 					System.out.println("Loading the Motor...");
-    				getBall();
+    				        getBall();
  					break;
  				case PUT:
- 				    label.setText("Put");
- 				    System.out.println("The robot is going to dance now!");
-                    putBall();
- 				    break;
+ 				        label.setText("Put");
+ 				        System.out.println("The robot is going to dance now!");
+                                        putBall();
+ 				        break;
 			}
 			try {
 				Thread.sleep(DELAY_MS);
