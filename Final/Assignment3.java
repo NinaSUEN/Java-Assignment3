@@ -3,7 +3,6 @@
 */
 
 import ShefRobot.*;
-//import sheffield.*;
 
 public class Assignment3{
 
@@ -59,37 +58,37 @@ public class Assignment3{
     }
     
     public static void followTheBlackLine(){
-    int counter=0;
-    while (mainArea() != AreaEnum.ERROR){	
-    	while (mainArea() == AreaEnum.BLACK_LINE){
-    		counter=0;
-    		System.out.println("Black");
-	 		keepMovingForward();
+    	int counter=0;
+    	while (mainArea() != AreaEnum.ERROR){	
+    		while (mainArea() == AreaEnum.BLACK_LINE){
+    			counter=0;
+    			System.out.println("Black");
+	 			keepMovingForward();
 	 	}
 		
 		while (mainArea() == AreaEnum.BLUE_AREA){
 			counter++;
 			if (counter<=4){
-	 	 	 System.out.println("White1");
-	 	 	 EV3football.turnLeft();
-	 	 	 mainRobot.myRobot.sleep(700);
+	 	 	 	System.out.println("White1");
+	 	 	 	EV3football.turnLeft();
+	 	 	 	mainRobot.myRobot.sleep(700);
 	 	 	 
 	 	 	 if (mainArea() == AreaEnum.BLUE_AREA){
-	 	 	 System.out.println("White2");
-	 	 	 EV3football.turnRight();
-	 	 	 mainRobot.myRobot.sleep(1000);
+	 	 	 	System.out.println("White2");
+	 	 	 	EV3football.turnRight();
+	 	 	 	mainRobot.myRobot.sleep(1000);
 
 	 	 	 }
 	 	 	 
 	 	 	}
 	 	 	else {System.out.println("Blue");
-	 	 	 getIntoTheBlueArea();
-	 	 	 return;
+	 	 		getIntoTheBlueArea();
+	 	 	 	return;
 	 	 	}
 		}
 	}
 		
-}
+    }
   
 
 
