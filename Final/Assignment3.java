@@ -46,18 +46,18 @@ public class Assignment3{
  
    	public static AreaEnum mainArea(){
 		if(mainRobot.colorSensor.getColor().equals(ColorSensor.Color.BLACK)){
-        	areaCode = AreaEnum.BLACK_LINE;
-        }
-    	else if(mainRobot.colorSensor.getColor().equals(ColorSensor.Color.WHITE)){
-         	areaCode = AreaEnum.WHITE_AREA;
-    	}
-    	else if(mainRobot.colorSensor.getColor().equals(ColorSensor.Color.BLUE)){
-    		areaCode = AreaEnum.BLUE_AREA;
-    	}
-    	else{
-          	areaCode = AreaEnum.ERROR;
-    	}
-        return areaCode;
+        		areaCode = AreaEnum.BLACK_LINE;
+        	}
+    		else if(mainRobot.colorSensor.getColor().equals(ColorSensor.Color.WHITE)){
+         		areaCode = AreaEnum.WHITE_AREA;
+    		}
+    		else if(mainRobot.colorSensor.getColor().equals(ColorSensor.Color.BLUE)){
+    			areaCode = AreaEnum.BLUE_AREA;
+    		}
+    		else{
+          		areaCode = AreaEnum.ERROR;
+    		}
+       		return areaCode;
     	}
 
 	/**
@@ -82,37 +82,37 @@ public class Assignment3{
 		//so that after a number of fail times of looking for the black line
 		//it will result to the robot being in the blue area.
 		
-    	int counter=0;
-    	while (mainArea() != AreaEnum.ERROR){	
-		//if it detects the black line reset the counter and move forward
-    		while (mainArea() == AreaEnum.BLACK_LINE){
-    			counter=0;
-    			System.out.println("Black");
-	 		keepMovingForward();
+    		int counter=0;
+    		while (mainArea() != AreaEnum.ERROR){	
+			//if it detects the black line reset the counter and move forward
+    			while (mainArea() == AreaEnum.BLACK_LINE){
+    				counter=0;
+    				System.out.println("Black");
+	 			keepMovingForward();
 	 		}
 		
-		while (mainArea() == AreaEnum.BLUE_AREA){
-			//if it detects the blue line increment the counter and turn left
-			counter++;
-			if (counter<=4){
-	 	 		System.out.println("White1");
-	 	 		EV3football.turnLeft();
-	 	 		mainRobot.myRobot.sleep(700);
-	 	 	//if it detects the blue line again turn right
-	 	 	if (mainArea() == AreaEnum.BLUE_AREA){
-	 	 		System.out.println("White2");
-	 	 		EV3football.turnRight();
-	 	 		mainRobot.myRobot.sleep(1000);
-	 	 	} 
-	 	 	}
-			//if it detects the blue line more than 4 times then the robot is in the blue line
-	 		else {
-				System.out.println("Blue");
-	 	 		getIntoTheBlueArea();
-	 	 	 	return;
-	 	 	}
+			while (mainArea() == AreaEnum.BLUE_AREA){
+				//if it detects the blue line increment the counter and turn left
+				counter++;
+				if (counter<=4){
+	 	 			System.out.println("White1");
+	 	 			EV3football.turnLeft();
+	 	 			mainRobot.myRobot.sleep(700);
+	 	 		//if it detects the blue line again turn right
+	 	 		if (mainArea() == AreaEnum.BLUE_AREA){
+	 	 			System.out.println("White2");
+	 	 			EV3football.turnRight();
+	 	 			mainRobot.myRobot.sleep(1000);
+	 	 		} 
+	 	 		}
+				//if it detects the blue line more than 4 times then the robot is in the blue line
+	 			else {
+					System.out.println("Blue");
+	 	 			getIntoTheBlueArea();
+	 	 	 		return;
+	 	 		}
+			}
 		}
-	}
 		
     	}
   	
@@ -122,15 +122,15 @@ public class Assignment3{
 	*/
 	public static void getIntoTheBlueArea(){
 
-        System.out.println("We have got into the Blue Area, we are looking for a ball now!");
+        	System.out.println("We have got into the Blue Area, we are looking for a ball now!");
 			
-       	System.out.println("The Floor light is : " + mainRobot.colorSensor.getFloodlightState());
-        System.out.println("The Floor colour is : " + mainRobot.colorSensor.getColor());
+       		System.out.println("The Floor light is : " + mainRobot.colorSensor.getFloodlightState());
+        	System.out.println("The Floor colour is : " + mainRobot.colorSensor.getColor());
 		
-        mainRobot.colorSensor.setFloodlightState(ColorSensor.FloodlightState.BLUE);
+        	mainRobot.colorSensor.setFloodlightState(ColorSensor.FloodlightState.BLUE);
 		//stop the Robot
-        mainRobot.leftMotor.stop();
-        mainRobot.rightMotor.stop();
+       		mainRobot.leftMotor.stop();
+        	mainRobot.rightMotor.stop();
    	}    
 }
 
