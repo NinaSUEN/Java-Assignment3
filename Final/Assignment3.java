@@ -59,8 +59,6 @@ public class Assignment3{
         return areaCode;
     	}
 
-    
-    
 	/**
 	* Makes the robot move forward
 	* @author Bryn Berkeley
