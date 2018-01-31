@@ -12,7 +12,7 @@ public class Assignment3{
 	public static EV3football mainRobot = new EV3football();
 	
 	//enum that represents the area that the robot will be demonstrated
-    public static enum AreaEnum {BLACK_LINE, WHITE_AREA, BLUE_AREA, ERROR};
+	public static enum AreaEnum {BLACK_LINE, WHITE_AREA, BLUE_AREA, ERROR};
     public static AreaEnum areaCode;
 	
 	/**
