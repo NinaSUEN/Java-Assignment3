@@ -17,10 +17,11 @@ public class Assignment3{
 	
 	/**
 	* the main method 
+	* @author Panagiotis Antoniou, Suen Tsz Ching	
 	* @param args not used
 	*/
 	public static void main(String[] args){ 	
-		//set the colour emitted by the sensor to OFF
+	//set the colour emitted by the sensor to OFF
         mainRobot.colorSensor.setFloodlightState(ColorSensor.FloodlightState.OFF);
         mainRobot.colorSensor.setMode(ColorSensor.Mode.COLOR);
 
@@ -28,10 +29,10 @@ public class Assignment3{
 
         followTheBlackLine();
         	
-		//create new thread to use the methods of controlling the robots in EV3football class
+	//create new thread to use the methods of controlling the robots in EV3football class
         Thread t = new Thread(new EV3football());
-		t.start();
-		//call the methods to be used in the program for controlling the robot
+	t.start();
+	//call the methods to be used in the program for controlling the robot
         EV3football.leftMotor.run(); 
        	EV3football.rightMotor.run();
         EV3football.mediumMotor.run();
