@@ -93,12 +93,12 @@ public class Assignment3{
 				//if it detects the blue line increment the counter and turn left
 				counter++;
 				if (counter<=4){
-	 	 			System.out.println("White1");
+	 	 			System.out.println("Turning left");
 	 	 			EV3football.turnLeft();
 	 	 			mainRobot.myRobot.sleep(700);
 	 	 			//if it detects the blue line again turn right
 	 	 			if (mainArea() == AreaEnum.BLUE_AREA){
-	 	 				System.out.println("White2");
+	 	 				System.out.println("Turning Right");
 	 	 				EV3football.turnRight();
 	 	 				mainRobot.myRobot.sleep(1000);
 	 	 			} 
