@@ -1,9 +1,13 @@
 /**
+* Class EV3football.java
+* An edited version of the original class EV3football.java given to us for this assignment
 * Sheffield University Robot Football Controller
 * Guy Brown September 2008, amended Siobhan North 2014
 * Rewritten for EV3 robots SDN 2016
 */
 
+
+//import all the relevant packages for controlling the robot
 import ShefRobot.*;
 
 import java.awt.BorderLayout;
@@ -26,15 +30,13 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 	//create an object of Robot type
 	public static Robot myRobot = new Robot();
 	
-	//create some motor objects of Motor type, Sensor type and Speaker type 
+	//create some motor objects of Motor type and  ColorSensor type 
     	public static ColorSensor colorSensor = myRobot.getColorSensor(Sensor.Port.S2);
     	public static Motor leftMotor = myRobot.getLargeMotor(Motor.Port.C);
     	public static Motor rightMotor = myRobot.getLargeMotor(Motor.Port.A);
     	public static Motor mediumMotor = myRobot.getMediumMotor(Motor.Port.B);
-    	public static Speaker speaker = myRobot.getSpeaker();
 	
 	//static constants to be used 
-    	public static final int NONE_SPEED = 0;
     	public static final int MOVING_SPEED = 200;
     	public static final int TURNING_SPEED = 60;
     	public static final int MOVING_TIME = 1000;
@@ -145,7 +147,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
    	}
 
    	/**
-    	* Calls the robot to move forward with moving speed
+    	* Calls the robot to move forward with the moving speed
 	* @author Suen Tsz Ching
     	*/	 
     	public static void forwardMoving(){
@@ -157,7 +159,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
  
 
    	/**
-	* Calls the robot to move reverse with moving speed
+	* Calls the robot to move in reverse with the moving speed
     	* @author Panagiotis Antoniou
     	*/
     	public static void reverseMoving(){
@@ -214,6 +216,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	* @author Panagiotis Antoniou
     	*/
    	public static void waggleDance(){
+		//get the robot to turn right and left continuously
 		for (int t=0; t<DANCE_TIMES; t++){
 			leftMotor.setSpeed(MOVING_SPEED);
 			rightMotor.setSpeed(MOVING_SPEED);
