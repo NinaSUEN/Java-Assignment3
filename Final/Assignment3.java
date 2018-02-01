@@ -95,12 +95,12 @@ public class Assignment3{
 				if (counter<=4){
 	 	 			System.out.println("Turning left");
 	 	 			EV3football.turnLeft();
-	 	 			mainRobot.myRobot.sleep(700);
+	 	 			mainRobot.myRobot.sleep(EV3football.SLEEP_TIME+200);
 	 	 			//if it detects the blue line again turn right
 	 	 			if (mainArea() == AreaEnum.BLUE_AREA){
 	 	 				System.out.println("Turning Right");
 	 	 				EV3football.turnRight();
-	 	 				mainRobot.myRobot.sleep(1000);
+	 	 				mainRobot.myRobot.sleep(EV3football.SLEEP_TIME*2);
 	 	 			} 
 	 	 		}
 				//if it detects the blue line more than 4 times then the robot is in the blue line
