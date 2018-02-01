@@ -13,7 +13,7 @@ public class Assignment3{
 	//get a reference of EV3football class for our robot
 	public static EV3football mainRobot = new EV3football();
 	
-	//enum that represents the area that the robot will be demonstrated
+	//create an enum that represents the area that the robot will be demonstrated
 	public static enum AreaEnum {BLACK_LINE, WHITE_AREA, BLUE_AREA, ERROR};
     	public static AreaEnum areaCode;
 	
@@ -23,10 +23,12 @@ public class Assignment3{
 	* @param args not used
 	*/
 	public static void main(String[] args){ 	
-		//set the colour emitted by the sensor to OFF
+		//set the light emitted by the sensor to OFF
 		mainRobot.colorSensor.setFloodlightState(ColorSensor.FloodlightState.OFF);
 		mainRobot.colorSensor.setMode(ColorSensor.Mode.COLOR);
+		//debugging statement to see what colour is the floor area
 		System.out.println(mainRobot.colorSensor.getFloodlightState());
+		//follow the black line
 		followTheBlackLine();        	
 		//create new thread to use the methods of controlling the robots in EV3football class
 		Thread t = new Thread(new EV3football());
@@ -76,6 +78,7 @@ public class Assignment3{
 	*/
     
    	public static void followTheBlackLine(){
+		
 		//use a counter because the sensor detects the blue colour instead of white
 		//so that after a number of fail times of looking for the black line
 		//it will result to the robot being in the blue area.
@@ -92,20 +95,21 @@ public class Assignment3{
 			while (mainArea() == AreaEnum.BLUE_AREA){
 				//if it detects the blue line increment the counter and turn left
 				counter++;
+				//if the sensor senses blue no more than 4 times then look for the black line by turning
 				if (counter<=4){
-	 	 			System.out.println("Turning left");
+	 	 			System.out.println("Not Blue. Turning left");
 	 	 			EV3football.turnLeft();
 	 	 			mainRobot.myRobot.sleep(EV3football.SLEEP_TIME+200);
 	 	 			//if it detects the blue line again turn right
 	 	 			if (mainArea() == AreaEnum.BLUE_AREA){
-	 	 				System.out.println("Turning Right");
+	 	 				System.out.println("Not Blue again. Turning Right");
 	 	 				EV3football.turnRight();
 	 	 				mainRobot.myRobot.sleep(EV3football.SLEEP_TIME*2);
 	 	 			} 
 	 	 		}
-				//if it detects the blue line more than 4 times then the robot is in the blue line
+				//if it detects the blue line more than 4 times then the robot is in the blue area
 	 			else {
-					System.out.println("Blue");
+					System.out.println("Blue Area");
 	 	 			getIntoTheBlueArea();
 	 	 	 		return;
 	 	 		}
@@ -119,10 +123,10 @@ public class Assignment3{
 	* @author Suen Tsz Ching
 	*/
 	public static void getIntoTheBlueArea(){
-        	System.out.println("We have got into the Blue Area!");			
-       		System.out.println("The Floor light is : " + mainRobot.colorSensor.getFloodlightState());
+        	System.out.println("We have got into the Blue Area!");	
+		//debugging statements to see what colour is the floor and the sensor light
+       		System.out.println("The Sensor light is : " + mainRobot.colorSensor.getFloodlightState());
         	System.out.println("The Floor colour is : " + mainRobot.colorSensor.getColor());		
-        	mainRobot.colorSensor.setFloodlightState(ColorSensor.FloodlightState.BLUE);
 		//stop the Robot
        		mainRobot.leftMotor.stop();
         	mainRobot.rightMotor.stop();
