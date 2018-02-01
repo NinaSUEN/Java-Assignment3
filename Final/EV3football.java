@@ -39,7 +39,6 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 	//static constants to be used 
     	public static final int MOVING_SPEED = 200;
     	public static final int TURNING_SPEED = 60;
-    	public static final int MOVING_TIME = 1000;
     	public static final int TURNING_TIME = 600;
     	public static final int DANCE_TIMES = 10;
     	public static final int SLEEP_TIME = 500;
