@@ -30,7 +30,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 	//create an object of Robot type
 	public static Robot myRobot = new Robot();
 	
-	//create some motor objects of Motor type and  ColorSensor type 
+	//create some motor objects of Motor type and ColorSensor type 
     	public static ColorSensor colorSensor = myRobot.getColorSensor(Sensor.Port.S2);
     	public static Motor leftMotor = myRobot.getLargeMotor(Motor.Port.C);
     	public static Motor rightMotor = myRobot.getLargeMotor(Motor.Port.A);
