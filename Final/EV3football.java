@@ -37,7 +37,6 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     	public static final int NONE_SPEED = 0;
     	public static final int MOVING_SPEED = 200;
     	public static final int TURNING_SPEED = 60;
-    	public static final int LOW_SPEED = 50;
     	public static final int MOVING_TIME = 1000;
     	public static final int TURNING_TIME = 600;
     	public static final int DANCE_TIMES = 10;
