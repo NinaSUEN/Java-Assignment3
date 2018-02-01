@@ -228,7 +228,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
 	}
 	
 	/**
-	* Makes the robot dance 
+	* Handles the commands based on key inputs. 
     	* @author Bryn Berkeley, Suen Tsz Ching, Panagiotis Antoniou, Tiange Xiang
     	*/
 	public void run() {
