@@ -25,14 +25,19 @@ public class Assignment3{
 	public static void main(String[] args){ 	
 		//set the light emitted by the sensor to OFF
 		mainRobot.colorSensor.setFloodlightState(ColorSensor.FloodlightState.OFF);
+		//set the mode for Colour Sensor which fits what we need
 		mainRobot.colorSensor.setMode(ColorSensor.Mode.COLOR);
+		
 		//debugging statement to see what colour is the floor area
 		System.out.println(mainRobot.colorSensor.getFloodlightState());
-		//follow the black line
-		followTheBlackLine();        	
+		
+		//call the follow the black line method
+		followTheBlackLine();   
+		
 		//create new thread to use the methods of controlling the robots in EV3football class
 		Thread t = new Thread(new EV3football());
 		t.start();
+		
 		//call the methods to be used in the program for controlling the robot
 		EV3football.leftMotor.run(); 
 		EV3football.rightMotor.run();
@@ -95,11 +100,13 @@ public class Assignment3{
 			while (mainArea() == AreaEnum.BLUE_AREA){
 				//if it detects the blue line increment the counter and turn left
 				counter++;
+				
 				//if the sensor senses blue no more than 4 times then look for the black line by turning
 				if (counter<=4){
 	 	 			System.out.println("Not Blue. Turning left");
 	 	 			EV3football.turnLeft();
 	 	 			mainRobot.myRobot.sleep(EV3football.SLEEP_TIME+200);
+					
 	 	 			//if it detects the blue line again turn right
 	 	 			if (mainArea() == AreaEnum.BLUE_AREA){
 	 	 				System.out.println("Not Blue again. Turning Right");
@@ -123,10 +130,12 @@ public class Assignment3{
 	* @author Suen Tsz Ching
 	*/
 	public static void getIntoTheBlueArea(){
-        	System.out.println("We have got into the Blue Area!");	
+        	System.out.println("We have got into the Blue Area!");
+		
 		//debugging statements to see what colour is the floor and the sensor light
        		System.out.println("The Sensor light is : " + mainRobot.colorSensor.getFloodlightState());
-        	System.out.println("The Floor colour is : " + mainRobot.colorSensor.getColor());		
+        	System.out.println("The Floor colour is : " + mainRobot.colorSensor.getColor());
+		
 		//stop the Robot
        		mainRobot.leftMotor.stop();
         	mainRobot.rightMotor.stop();
