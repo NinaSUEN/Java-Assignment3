@@ -10,11 +10,6 @@ import ShefRobot.ColorSensor.Color.*;
 
 public class MainStatus{
 
-//     public static final ColorSensor.Color WHITE;
-//     public static final ColorSensor.Color BLACK;
-//     public static final ColorSensor.Color BLUE;
-//     public static final ColorSensor.Color NONE;
-
     public static enum Color {BLACK, WHITE, BLUE, NONE};
     public static enum BallStatus {YES, NO, OTHER};
 
@@ -49,6 +44,3 @@ public class MainStatus{
     }
 
 }
-
-
-
