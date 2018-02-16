@@ -161,52 +161,7 @@ public class Assignment{
         System.out.println("The Floor colour is : " + mainRobot.colorSensor.getColor());
 
         mainRobot.colorSensor.setFloodlightState(ColorSensor.FloodlightState.BLUE);
-
-        // if(grabTheBall != false){
-        //     MainStatus success = new MainStatus(BLUE, YES);
-        //     System.out.println(success.toString());
-        //     mainRobot.turningAround();
-        //     findTheBlackLine();
-        // }
-        // else if(grabTheBall == false){
-        //     MainStatus fail = new MainStatus(BLUE, NO);
-        //     System.out.println(fail.toString());
-        //     initialization();
-        // }
-        // else{
-        //     MainStatus unknown = new MainStatus(BLUE, OTHER);
-        //     System.out.println(unknown.toString());
-        //     initialization();
-        // }
     }
-
-
-    // public static boolean grabTheBall(int currentDistance){
-
-    //     while((currentDistance > 6) || ultrasonicSensor.disable()){
-
-    //     mainRobot.forwardMoving();
-
-    //         if((currentDistance < 15) && (currentDistance < 0)){
-    //     		    System.out.println(currentDistance);
-    //     		    MainStatus.BallStatus.YES;
-    //     		    grabTheBall = true;
-    //         }
-    //         else if(ultrasonicSensor.getDistance() >= 15){
-    //             System.out.println(ultrasonicSensor.getDistance());
-    //     	      MainStatus.BallStatus.NO;
-    //     	      grabTheBall = false;
-    //         }
-    //         else{
-    //             System.out.println(ultrasonicSensor.getDistance());
-    //     	      MainStatus.BallStatus.OTHER;
-    //     	      grabTheBall = false;
-    //     	      //return 255;
-    //         }
-    //         return grabTheBall;
-    //     }
-    // }
-
 
 
     public static void keepTurningAround(){
@@ -271,30 +226,5 @@ public class Assignment{
          mainRobot.leftMotor.backward();
      }
     }
-
-    
-    // public static ColorSensor.Color getColor(){
-
-    // 	//getColor = colorSensor.getColor();
-   	    
-   	//     if(mainRobot.getColor().equals(BLACK)){
-    //         return MainStatus.Color.BLACK;
-   	//     }
-   	//     else if(mainRobot.getColor().equals(WHITE)){
-    //  		    return MainStatus.Color.BLACK;
-   	//     }
-   	//     else if(mainRobot.getColor().equals(BLUE)){
-    //         return MainStatus.Color.BLUE;
-   	//     }
-   	//     else if(mainRobot.getColor().equals(NONE)){
-    //         return MainStatus.Color.NONE;
-   	//     }
-   	//     else{
-    //         return MinStatus.Color;
-    //     }
-
-    // }
-
     
 }
-
