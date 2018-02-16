@@ -263,6 +263,26 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
         leftMotor.flt(true);
     	rightMotor.flt(true);
     }
+	
+       /*
+    * @author Suen Tsz Ching
+    * Calls the medium motor to move, makes the robot to grab a ball.
+    */
+    public static void getBall(){
+	mediumMotor.setSpeed(LOW_SPEED);
+	mediumMotor.forward();
+    }
+
+
+     /*
+    * @author Suen Tsz Ching 
+    * Calls the medium motor to move, makes the robot to grab a ball.
+    */
+    public static void putBall(){
+	mediumMotor.setSpeed(LOW_SPEED);
+	mediumMotor.backward();
+    }	
+   
 
    /*
     * @author Suen Tsz Ching
@@ -288,16 +308,7 @@ public class EV3football extends JFrame implements Runnable, KeyListener, Window
     * @author Suen Tsz Ching
     * Calls the different moving methods when a keyboard command was called.
     */
-    public void run() {
-	    
-	// This defines and names the two large motors that turn the wheels
-	// Motor leftMotor = myRobot.getLargeMotor(Motor.Port.B);
-	// Motor rightMotor = myRobot.getLargeMotor(Motor.Port.C);
-
-	// Motor mediumMotor = myRobot.getMediumMotor(Motor.Port.A);
-        // Speaker speaker = myRobot.getSpeaker();
-
-		
+    public void run() {		
         //put your code to define other things here
 
 		while (true) {
